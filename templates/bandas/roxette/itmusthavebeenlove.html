@@ -12,7 +12,7 @@
     <title>It Must Have Been Love</title>
 
     <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="../../../static/js/scripts.js"></script>
+    <!-- <script type="text/javascript" src="../../../static/js/scripts.js"></script> -->
 
    
     <style>
@@ -22,10 +22,19 @@
     }
     </style>
 
+    <style type="text/css">
+        .errou {
+            color: red;
+        }
+        .acertou {
+            color: green;
+        }
+    </style>
+
 
 </head>
 
-<body>
+<body ng-app="asdApp" ng-controller="asdCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,64 +66,116 @@
 
     
     <div class="container">
+    <h1>It Must Have Been Love</h1> 
 
         <div class="row">
             <div class="col-lg-4">
-                <h1>It Must Have Been Love</h1>
-                <p>It must have been love but it's over now</p>
+             <span ng-repeat="palavra in letra_palavras track by $index">{{ get_palavra($index) }}<input type="text" ng-if="get_palavra($index) == ''" ng-model="palavras_usuario[palavras_faltando.indexOf($index)]" ng-class="{'acertou': acertou($index), 'errou': !acertou($index)}"> <br ng-if="quebra_linha($index)" /></span>
 
-				<p>Lay a whisper on my pillow<br>
-				Leave the winter on the ground<br>
-				I wake up lonely, there's air of silence<br>
-				In the bedroom and all around (and all around)</p>
+    <script type="text/javascript" src="../../../static/js/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('asdApp', []);
 
-				<p>Touch me now, I close my eyes<br>
-				And dream away</p>
-
-				<p>It must have been love but it's over now<br>
-				It must have been good but I lost it somehow<br>
-				It must have been love but it's over now<br>
-				From the moment we touched til the time had run out</p>
-
-				<p>Make-believing we're together<br>
-				That I'm sheltered by your heart<br>
-				But in and outside I've turned to water<br>
-				Like a teardrop in your palm</p>
-
-				<p>And it's a hard winter's day<br>
-				I dream away</p>
-
-				<p>It must have been love but it's over now<br>
-				(it must have been love but it's over now)<br>
-				It was all that I wanted, now I'm living without<br>
-				It must have been love but it's over now<br>
-				(it must have been love, the winds blows)<br>
-				It's where the water flows<br>
-				It's where the wind blows</p>
-
-				<p>It must have been love but it's over now<br>
-				(it must have been love but it's over now)<br>
-				It must have been good but I lost it somehow<br>
-				It must have been love but it's over now<br>
-				(it must have been love but it's over now)<br>
-				From the moment we touched til the time had run out</p>
-
-				<p>Yeah! It must have been love but it's over now<br>
-				(it must have been love but it's over now)<br>
-				It was all that I wanted, now I'm living without<br>
-				It must have been love but it's over now<br>
-				(the winds blows)<br>
-				It's where the water flows<br>
-				It's where the wind blows</p>
-
-				<p>Ohhh! (it must have been love but it's over now)
-				But it's over now<br>
-				Nooowww!<br>
-				(it must have been love but it's over now)<br>
-				(it must have been love but it's over now)<br>
-				Nooowww!</p>
+        app.controller('asdCtrl', ['$scope', function($scope){
+            $scope.palavras_faltando_n = 10;
+            $scope.palavras_faltando = [];
+            $scope.palavras_usuario = [];
+            $scope.letra =
                 
-				<button class="btn btn-primary btn-md" onclick="#">salvar</button>
+                "It must have been love but it's over now\n" +
+
+				"Lay a whisper on my pillow\n" +
+				"Leave the winter on the ground\n" +
+				"I wake up lonely, there's air of silence\n" +
+				"In the bedroom and all around (and all around)\n" +
+
+				"Touch me now, I close my eyes\n" +
+				"And dream away\n" +
+
+				"It must have been love but it's over now\n" +
+				"It must have been good but I lost it somehow\n" +
+				"It must have been love but it's over now\n" +
+				"From the moment we touched til the time had run out\n" +
+
+				"Make-believing we're together\n" +
+				"That I'm sheltered by your heart\n" +
+				"But in and outside I've turned to water\n" +
+				"Like a teardrop in your palm\n" +
+
+				"And it's a hard winter's day\n" +
+				"I dream awayn" +
+
+				"It must have been love but it's over now\n" +
+				"(it must have been love but it's over now)\n" +
+				"It was all that I wanted, now I'm living without\n" +
+				"It must have been love but it's over now\n" +
+				"(it must have been love, the winds blows)\n" +
+				"It's where the water flows\n" +
+				"It's where the wind blows\n" +
+
+				"It must have been love but it's over now\n" +
+				"(it must have been love but it's over now)\n" +
+				"It must have been good but I lost it somehow\n" +
+				"It must have been love but it's over now\n" +
+				"(it must have been love but it's over now)\n" +
+				"From the moment we touched til the time had run out\n" +
+
+				"Yeah! It must have been love but it's over now\n" +
+				"(it must have been love but it's over now)\n" +
+				"It was all that I wanted, now I'm living without\n" +
+				"It must have been love but it's over now\n" +
+				"(the winds blows)\n" +
+				"It's where the water flows\n" +
+				"It's where the wind blows\n" +
+
+				"Ohhh! (it must have been love but it's over now)\n" +
+				"But it's over now\n" +
+				"Nooowww!\n" +
+				"(it must have been love but it's over now)\n" +
+				"(it must have been love but it's over now)\n" +
+				"Nooowww!";
+                
+				// <button class="btn btn-primary btn-md" onclick="#">salvar</button>
+                $scope._quebra_linha = [];
+            $scope.letra_linhas = $scope.letra.split('\n');
+            $scope.letra_palavras = $scope.letra_linhas.join(' ').split(' ');
+
+            $scope.get_palavra = function(n){
+                return ($scope.palavras_faltando.indexOf(n) == -1 ? $scope.letra_palavras[n] : '');
+            }
+
+            $scope.sortear_palavras = function(){
+                $scope.palavras_faltando = [];
+                while($scope.palavras_faltando.length < $scope.palavras_faltando_n){
+                    var n = parseInt(Math.random() * $scope.letra_palavras.length);
+                    if($scope.palavras_faltando.indexOf(n) == -1){
+                        $scope.palavras_faltando.push(n);
+                        $scope.palavras_usuario.push('');
+                    }
+                }
+            }
+
+            $scope.quebrar_linhas = function(){
+                $scope._quebra_linha = [];
+                var total_palavras = 0;
+                for(var n = 0; n < $scope.letra_linhas.length; n++){
+                    total_palavras += $scope.letra_linhas[n].split(' ').length;
+                    $scope._quebra_linha.push(total_palavras - 1);
+                }
+            }
+
+            $scope.quebra_linha = function(n){
+                return $scope._quebra_linha.indexOf(n) != -1;
+            }
+
+            $scope.acertou = function(n){
+                return $scope.letra_palavras[n].toLowerCase() == $scope.palavras_usuario[$scope.palavras_faltando.indexOf(n)].toLowerCase();
+            }
+
+            $scope.sortear_palavras();
+            $scope.quebrar_linhas();
+        }]);
+    </script>
                               
             </div>
            <!--  <div class="col-ms-1">
@@ -124,9 +185,9 @@
 
     </div>
 
-    <script src="../js/jquery.js"></script>
+        <script src="../js/jquery.js"></script>
 
-    <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
 </body>
 
