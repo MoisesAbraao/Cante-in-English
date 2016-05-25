@@ -12,8 +12,6 @@
     <title>Comfortably Numb</title>
 
     <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="../../../static/js/scripts.js"></script>
-
    
     <style>
     body {
@@ -21,11 +19,19 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
+    <style type="text/css">
+        .errou {
+            color: red;
+        }
+        .acertou {
+            color: green;
+        }
+    </style>
 
 
 </head>
 
-<body>
+<body ng-app="asdApp" ng-controller="asdCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,64 +63,60 @@
 
     
     <div class="container">
-
+        <h1>Comfortably Numb</h1>
         <div class="row">
             <div class="col-lg-4">
-                <h1>Comfortably Numb</h1>
-                <p>Hello<br>
-                Is there <input type="text" id="c1"> in there?<br>
-                Just nod if you can hear me<br>
-                Is there anyone at home?</p>
+               <span ng-repeat="palavra in letra_palavras track by $index">{{ get_palavra($index) }}<input type="text" ng-if="get_palavra($index) == ''" ng-model="palavras_usuario[palavras_faltando.indexOf($index)]" ng-class="{'acertou': acertou($index), 'errou': !acertou($index)}"> <br ng-if="quebra_linha($index)" /></span>
 
-                <p>Come on now<br>
-                I hear you're <input type="text" id="c2"> down<br>
-                Well, I can ease your pain<br>
-                And get you on your feet again</p>
 
-                <p>Relax<br>
-                I'll need some information first<br>
-                Just the basic facts<br>
-                Can you show me where it hurts</p>
+                <input type="hidden" id="letra" value="Hello
+Is there anybody in there?
+Just nod if you can hear me
+Is there anyone at home?
+Come on now
+I hear you're feeling down
+Well, I can ease your pain
+And get you on your feet again
+Relax
+I'll need some information first
+Just the basic facts
+Can you show me where it hurts
+There is no pain, you are receding
+A distant ship's smoke on the horizon
+You are only coming through in waves
+Your lips move but I can't hear what you're saying
+When I was a child I had a fever
+My hands felt just like two balloons
+Now I've got that feeling once again
+I can't explain, you would not understand
+This is not how I am
+I have become comfortably numb
+I have become comfortably numb
+Ok
+Just a little pin prick
+There'll be no more
+Ah!
+But you might feel a little sick
+Can you stand up?
+I do belive it's working, good
+That'll keep you going, through the show
+Come on it's time to go
+There is no pain you are receding
+A distant ship's smoke on the horizon
+You are only coming through in waves
+Your lips move, but I can't hear what you're saying
+When I was a child
+I caught a fleeting glimpse
+Out of the corner of my eye
+I turned to look but it was gone
+I cannot put my finger on it now
+The child is grown
+The dream is gone
+And I have become
+Comfortably numb"/>
 
-                <p>There is no pain, you are receding<br>
-                A <input type="text" id="c3"> ship's smoke on the horizon<br>
-                You are only coming through in waves<br>
-                Your lips move but I can't hear what you're saying<br>
-                When I was a child I had a fever<br>
-                My hands felt just like two balloons</p>
-
-                <p>Now I've got that feeling once again<br>
-                I can't explain, you <input type="text" id="c4"> not understand<br>
-                This is not how I am<br>
-                I have become comfortably numb</p>
-
-                <p>I have become comfortably numb</p>
-
-                <p>Ok<br>
-                Just a little pin prick<br>
-                There'll be no more<br>
-                Ah!<br>
-                But you <input type="text" id="c5"> feel a little sick<br>
-                Can you stand up?<br>
-                I do belive it's working, good<br>
-                That'll keep you going, through the show<br>
-                Come on it's time to go</p>
-
-                <p>There is no pain you are receding<br>
-                A distant ship's smoke on the horizon<br>
-                You are only coming through in <input type="text" id="c6"><br>
-                Your lips move, but I can't hear what you're saying<br>
-                When I was a child<br>
-                I caught a fleeting glimpse<br>
-                Out of the corner of my eye<br>
-                I turned to <input type="text" id="c7"> but it was gone<br>
-                I cannot put my finger on it now<br>
-                The child is grown<br>
-                The dream is gone<br>
-                And I have become<br>
-                Comfortably numb</p>
-                
-				<button class="btn btn-primary btn-md" onclick="comfortablynumb()">salvar</button>
+        <script type="text/javascript" src="../../../static/js/angular.min.js"></script>
+        <script type="text/javascript" src="../../../static/js/scriptA.js"></script>
                               
             </div>
             <div class="col-ms-1">
@@ -123,10 +125,6 @@
         </div>
 
     </div>
-
-    <script src="../js/jquery.js"></script>
-
-    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 

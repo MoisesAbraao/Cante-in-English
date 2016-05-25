@@ -12,8 +12,6 @@
     <title>Hey You</title>
 
     <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="../../../static/js/scripts.js"></script>
-
    
     <style>
     body {
@@ -21,11 +19,19 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
+    <style type="text/css">
+        .errou {
+            color: red;
+        }
+        .acertou {
+            color: green;
+        }
+    </style>
 
 
 </head>
 
-<body>
+<body ng-app="asdApp" ng-controller="asdCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,59 +63,54 @@
 
     
     <div class="container">
-
+        <h1>Hey You</h1>
         <div class="row">
             <div class="col-lg-4">
-                <h1>Hey You</h1>
-                <p>Hey, you<br>
-                Out there in the <input type="text" id="c1"><br>
-                Getting lonely, getting old<br>
-                Can you feel me?</p>
+                <span ng-repeat="palavra in letra_palavras track by $index">{{ get_palavra($index) }}<input type="text" ng-if="get_palavra($index) == ''" ng-model="palavras_usuario[palavras_faltando.indexOf($index)]" ng-class="{'acertou': acertou($index), 'errou': !acertou($index)}"> <br ng-if="quebra_linha($index)" /></span>
 
-                <p>Hey, you<br>
-                Standing in the aisle<br>
-                <input type="text" id="c2"> itchy feet and fading smile<br>
-                Can you feel me?</p>
 
-                <p>Hey, you<br>
-                Don't <input type="text" id="c3"> them to bury the light<br>
-                Don't give in, without a fight</p>
+                <input type="hidden" id="letra" value="Hey, you
+Out there in the cold
+Getting lonely, getting old
+Can you feel me?
+Hey, you
+Standing in the aisle
+With itchy feet and fading smile
+Can you feel me?
+Hey, you
+Don't help them to bury the light
+Don't give in, without a fight
+Hey, you
+Out there on your own
+Sitting naked by the phone
+Would you touch me?
+Hey, you
+With your ear against the wall
+Waiting for someone to call out
+Would you touch me?
+Hey, you
+Would you help me to carry the stone?
+Open your heart, I'm coming home
+But it was only fantasy
+The wall was too high, as you can see
+No matter how he tried, he could not break free
+And the worms ate into his brain
+Hey, you
+Out there on the road
+Always doing what you're told
+Can you help me?
+Hey, you
+Out there beyond the wall
+Breaking bottles in the hall
+Can you help me?
+Hey, you
+Don't tell me there's no hope at all
+Together we stand, divided we fall"/>
 
-                <p>Hey, you<br>
-                Out there on your own<br>
-                Sitting naked by the phone<br>
-                Would you <input type="text" id="c4"> me?</p>
-
-                <p>Hey, you<br>
-                With your ear against the wall<br>
-                Waiting for someone to call out<br>
-                Would you touch me?</p>
-
-                <p>Hey, you<br>
-                Would you help me to <input type="text" id="c5"> the stone?<br>
-                Open your heart, I'm coming home</p>
-
-                <p>But it was only fantasy<br>
-                The <input type="text" id="c6"> was too high, as you can see<br>
-                No matter how he tried, he could not break free<br>
-                And the worms ate into his brain</p>
-
-                <p>Hey, you<br>
-                Out there on the road<br>
-                Always doing <input type="text" id="c7"> you're told<br>
-                Can you help me?</p>
-
-                <p>Hey, you<br>
-                Out there beyond the wall<br>
-                Breaking bottles in the hall<br>
-                Can you help me?</p>
-
-                <p>Hey, you<br>
-                Don't tell me there's no hope at all<br>
-                Together we stand, divided we fall</p>
+        <script type="text/javascript" src="../../../static/js/angular.min.js"></script>
+        <script type="text/javascript" src="../../../static/js/scriptA.js"></script>
+                              
                 
-                
-				<button class="btn btn-primary btn-md" onclick="heyyou()">salvar</button>
                               
             </div>
             <div class="col-ms-1">
@@ -119,10 +120,5 @@
 
     </div>
 
-    <script src="../js/jquery.js"></script>
-
-    <script src="../js/bootstrap.min.js"></script>
-
-</body>
 
 </html>

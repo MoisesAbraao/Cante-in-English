@@ -12,8 +12,7 @@
     <title>You and I</title>
 
     <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="../../../static/js/scripts.js"></script>
-
+   
    
     <style>
     body {
@@ -21,11 +20,19 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
+    <style type="text/css">
+        .errou {
+            color: red;
+        }
+        .acertou {
+            color: green;
+        }
+    </style>
 
 
 </head>
 
-<body>
+<body ng-app="asdApp" ng-controller="asdCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,72 +64,64 @@
 
     
     <div class="container">
-
+        <h1>You and I</h1>
         <div class="row">
             <div class="col-lg-4">
-                <h1>You and I</h1>
-                <p>I lose control  <input type="text" id="c1"> of you, babe<br>
-                I lose control when you look at me like this<br>
-                There's something in your eyes<br>
-                That is saying</p>
+                <span ng-repeat="palavra in letra_palavras track by $index">{{ get_palavra($index) }}<input type="text" ng-if="get_palavra($index) == ''" ng-model="palavras_usuario[palavras_faltando.indexOf($index)]" ng-class="{'acertou': acertou($index), 'errou': !acertou($index)}"> <br ng-if="quebra_linha($index)" /></span>
 
-                <p>Tonight I'm not a  <input type="text" id="c2"> anymore<br>
-                Life has opened the door<br>
-                To a new exciting life</p>
 
-                <p>I lose control when I'm close to you, babe<br>
-                I lose control don't look at me like this<br>
-                There's  <input type="text" id="c3"> in your eyes<br>
-                Is this love at first sight</p>
+                <input type="hidden" id="letra" value="I lose control because of you, babe
+I lose control when you look at me like this
+There's something in your eyes
+That is saying
+Tonight I'm not a child anymore
+Life has opened the door
+To a new exciting life
+I lose control when I'm close to you, babe
+I lose control don't look at me like this
+There's something in your eyes
+Is this love at first sight
+Like a flower that grows
+Life just wants you to know
+All the secrets of life
+Its all written down in your lifelines
+Its written down inside your heart
+You and I just have a dream
+To find our love a place
+Where we can hide away
+You and I, we're just made
+To love each other now
+Forever and a day
+I lose control because of you, babe
+I lose control don't look at me like this
+There's something in your eyes
+That is saying
+Tonight I'm so curious for more
+Just like never before
+In my innocent life
+Its all written down in your lifelines
+Its written down inside your heart
+You and I just have a dream
+To find our love a place
+Where we can hide away
+You and I, we're just made
+To love each other now
+Forever and a day
+The time stands still
+When the days of innocence
+Are falling for the night
+I love you, girl, I always will
+I swear, I'm there for you
+Till the day I die
+You and I just have a dream
+To find our love a place
+Where we can hide away
+You and I, we're just made
+To love each other now
+Forever and a day"/>
 
-                <p>Like a flower that grows<br>
-                Life just wants you to  <input type="text" id="c4"><br>
-                All the secrets of life</p>
-
-                <p>Its all written down in your lifelines<br>
-                Its written down inside your heart</p>
-
-                <p>You and I just  <input type="text" id="c5"> a dream<br>
-                To find our love a place<br>
-                Where we can hide away<br>
-                You and I, we're just made<br>
-                To love each other now<br>
-                Forever and a day</p>
-
-                <p>I lose control because of you, babe<br>
-                I lose control don't look at me like this<br>
-                There's something in your eyes<br>
-                That is  <input type="text" id="c6"></p>
-
-                <p>Tonight I'm so curious for more<br>
-                Just like never before<br>
-                In my innocent life</p>
-
-                <p>Its all written down in your lifelines<br>
-                Its written down inside your heart</p>
-
-                <p>You and I just have a dream<br>
-                To find our love a place<br>
-                 <input type="text" id="c7"> we can hide away<br>
-                You and I, we're just made<br>
-                To love each other now<br>
-                Forever and a day</p>
-
-                <p>The time stands still<br>
-                When the days of innocence<br>
-                Are falling for the  <input type="text" id="c8"><br>
-                I love you, girl, I always will<br>
-                I swear, I'm there for you<br>
-                Till the day I die</p>
-
-                <p>You and I just have a dream<br>
-                To find our love a place<br>
-                Where we can hide  <input type="text" id="c9"><br>
-                You and I, we're just made<br>
-                To love each other now<br>
-                Forever and a day</p>
-                
-				<button class="btn btn-primary btn-md" onclick="youandi()">salvar</button>
+        <script type="text/javascript" src="../../../static/js/angular.min.js"></script>
+        <script type="text/javascript" src="../../../static/js/scriptA.js"></script>
                               
             </div>
             <div class="col-ms-1">
@@ -131,10 +130,6 @@
         </div>
 
     </div>
-
-    <script src="../js/jquery.js"></script>
-
-    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 
