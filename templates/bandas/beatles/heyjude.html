@@ -12,7 +12,7 @@
     <title>Hey Jude</title>
 
     <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="../../../static/js/scripts.js"></script>
+    
    
     <style>
     body {
@@ -20,11 +20,19 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
+    <style type="text/css">
+        .errou {
+            color: red;
+        }
+        .acertou {
+            color: green;
+        }
+    </style>
 
 
 </head>
 
-<body>
+<body ng-app="asdApp" ng-controller="asdCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -56,50 +64,49 @@
 
     
     <div class="container">
+        <h1>Hey Jude</h1>
 
         <div class="row">
             <div class="col-lg-4">
-                <h1>Hey Jude</h1>
+               <span ng-repeat="palavra in letra_palavras track by $index">{{ get_palavra($index) }}<input type="text" ng-if="get_palavra($index) == ''" ng-model="palavras_usuario[palavras_faltando.indexOf($index)]" ng-class="{'acertou': acertou($index), 'errou': !acertou($index)}"> <br ng-if="quebra_linha($index)" /></span>
 
-                	<p>Hey, Jude, don't make it bad<br>
-					Take a sad song and <input type="text" id="c1">it better<br>
-					Remember to let her into your heart<br>
-					Then you can <input type="text" id="c2"> to make it better</p>
 
-					<p>Hey, Jude, don't be afraid<br>
-					You <input type="text" id="c3"> made to go out and get her<br>
-					The minute you let her under your skin<br>
-					Then you begin to make it <input type="text" id="c4"></p>
+                <input type="hidden" id="letra" value="Hey, Jude, don't make it bad
+Take a sad song and make it better
+Remember to let her into your heart
+Then you can start to make it better
+Hey, Jude, don't be afraid
+You were made to go out and get her
+The minute you let her under your skin
+Then you begin to make it better
+And anytime you feel the pain
+Hey, Jude, refrain
+Don't carry the world upon your shoulders
+For well you know that it's a fool
+Who plays it cool
+By making his world a little colder
+Na na na na na na na na
+Hey, Jude, don't let me down
+You have found her now go and get her
+Remember (hey, Jude) to let her into your heart
+Then you can start to make it better
+So let it out and let it in
+Hey, Jude, begin
+You're waiting for someone to perform with
+And don't you know that is just you?
+Hey, Jude, you'll do!
+The movement you need is on your shoulder
+Na na na na na na na na
+Hey, Jude, don't make it bad
+Take a sad song and make it better
+Remember to let her under your skin
+Then you'll begin to make it better (better, better, better,better, better, oh!)
+Na, na na na na na, na na na, hey, Jude
+Na, na na na na na, na na na, hey, Jude"/>
 
-					<p>And anytime you feel the pain<br>
-					Hey, Jude, refrain<br>
-					Don't carry the <input type="text" id="c5"> upon your shoulders</p>
+        <script type="text/javascript" src="../../../static/js/angular.min.js"></script>
+        <script type="text/javascript" src="../../../static/js/scriptA.js"></script>
 
-					<p>For well you know that it's a fool<br>
-					Who plays it cool<br>
-					By making his world a <input type="text" id="c6"> colder<br>
-					Na na na na na na na na</p>
-
-					<p>Hey, Jude, don't let me down<br>
-					You have found her now go and get her<br>
-					<input type="text" id="c7"> (hey, Jude) to let her into your heart<br>
-					Then you can start to make it better</p>
-
-					<p>So let it out and let it in<br>
-					Hey, Jude, begin<br>
-					You're waiting for <input type="text" id="c8"> to perform with<br>
-					And don't you know that is just you?<br>
-					Hey, Jude, you'll do!<br>
-					The movement you <input type="text" id="c9"> is on your shoulder<br>
-					Na na na na na na na na</p>
-
-					<p>Hey, Jude, don't make it bad<br>
-					Take a <input type="text" id="c10"> song and make it better<br>
-					Remember to let her under your skin<br>
-					Then you'll begin to make it better (better, better, better,better, better, oh!)<br>
-					Na, na na na na na, na na na, hey, Jude<br>
-					Na, na na na na na, na na na, hey, Jude</p><br>
-                    <button class="btn btn-primary btn-md" onclick="heyjude()">salvar</button>
             </div>
             <div class="col-ms-1">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/A_MjCqQoLLA" frameborder="0" allowfullscreen></iframe>
@@ -108,9 +115,7 @@
 
     </div>
 
-    <script src="../js/jquery.js"></script>
 
-    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 
