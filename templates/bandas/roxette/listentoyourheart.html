@@ -72,121 +72,69 @@
             <div class="col-lg-4">
              <span ng-repeat="palavra in letra_palavras track by $index">{{ get_palavra($index) }}<input type="text" ng-if="get_palavra($index) == ''" ng-model="palavras_usuario[palavras_faltando.indexOf($index)]" ng-class="{'acertou': acertou($index), 'errou': !acertou($index)}"> <br ng-if="quebra_linha($index)" /></span>
 
+<input type="hidden" id="letra" value="I know there's something in the wake of your smile
+I get a notion from the look in your eyes, yea
+You've built a love, but that love falls apart
+Your little piece of heaven turns to dark
+Listen to your heart
+When he's calling for you
+Listen to your heart
+There's nothing else you can do
+I don't know where you're going
+And I don't know why
+But listen to your heart
+Before you tell him goodbye
+Sometimes you wonder if this fight is worthwhile
+The precious moments are all lost in the tide, yea
+They're swept away and nothing is what is seems
+The feeling of belonging to your dreams
+Listen to your heart
+When he's calling for you
+Listen to your heart
+There's nothing else you can do
+I don't know where you're going
+And I don't know why
+But listen to your heart
+Before you tell him goodbye
+And there are voices
+That want to be heard
+So much to mention
+But you can't find the words
+The scent of magic
+The beauty that's been
+When love was wilder than the wind
+Listen to your heart
+Take a listen to it
+He's calling for you
+Listen to your heart
+Take a listen to it
+Else you can do
+I don't know where you're going
+And I don't know why
+But listen to your heart
+Before
+Listen to your heart!
+Take a listen to it
+He's calling for you
+Listen to your heart!\
+Take a listen to it
+Else you can do
+I don't know where you're going
+And I don't know why
+But listen to your heart
+Before you tell him goodbye
+(Listen to your heart)
+(Listen to your heart)
+(Listen to your heart)
+(Listen to your heart)
+(Listen to your heart)">
+
     <script type="text/javascript" src="../../../static/js/angular.min.js"></script>
-    <script type="text/javascript">
-        var app = angular.module('asdApp', []);
-
-        app.controller('asdCtrl', ['$scope', function($scope){
-            $scope.palavras_faltando_n = 10;
-            $scope.palavras_faltando = [];
-            $scope.palavras_usuario = [];
-            $scope.letra =
+    <script type="text/javascript" src="../../../static/js/scriptA.js"></script>
+    
+    
                 
-                "I know there's something in the wake of your smile\n" +
-                                    "I get a notion from the look in your eyes, yea\n" +
-                                    "You've built a love, but that love falls apart\n" +
-                                    "Your little piece of heaven turns to dark\n" +
-
-                                    "Listen to your heart\n" +
-                                    "When he's calling for you\n" +
-                                    "Listen to your heart\n" +
-                                    "There's nothing else you can do\n" +
-                                    "I don't know where you're going\n" +
-                                    "And I don't know why\n" +
-                                    "But listen to your heart\n" +
-                                    "Before you tell him goodbye\n" +
-
-                                    "Sometimes you wonder if this fight is worthwhile\n" +
-                                    "The precious moments are all lost in the tide, yea\n" +
-                                    "They're swept away and nothing is what is seems\n" +
-                                    "The feeling of belonging to your dreams\n" +
-
-                                    "Listen to your heart\n" +
-                                    "When he's calling for you\n" +
-                                    "Listen to your heart\n" +
-                                    "There's nothing else you can do\n" +
-                                    "I don't know where you're going\n" +
-                                    "And I don't know why\n" +
-                                    "But listen to your heart\n" +
-                                    "Before you tell him goodbye\n" +
-
-                                    "And there are voices\n" +
-                                    "That want to be heard\n" +
-                                    "So much to mention\n" +
-                                    "But you can't find the words\n" +
-                                    "The scent of magic\n" +
-                                    "The beauty that's been\n" +
-                                    "When love was wilder than the wind\n" +
-
-                                    "Listen to your heart\n" +
-                                    "Take a listen to it\n" +
-                                    "He's calling for you\n" +
-                                    "Listen to your heart\n" +
-                                    "Take a listen to it\n" +
-                                    "Else you can do\n" +
-                                    "I don't know where you're going\n" +
-                                    "And I don't know why\n" +
-                                    "But listen to your heart\n" +
-                                    "Before\n" +
-
-                                    "Listen to your heart!\n" +
-                                    "Take a listen to it\n" +
-                                    "He's calling for you\n" +
-                                    "Listen to your heart!\n" +
-                                    "Take a listen to it\n" +
-                                    "Else you can do\n" +
-                                    "I don't know where you're going\n" +
-                                    "And I don't know why\n" +
-                                    "But listen to your heart\n" +
-                                    "Before you tell him goodbye\n" +
-
-                                    "(Listen to your heart)\n" +
-                                    "(Listen to your heart)\n" +
-                                    "(Listen to your heart)\n" +
-                                    "(Listen to your heart)\n" +
-                                    "(Listen to your heart)";
-                
-                // <button class="btn btn-primary btn-md" onclick="#">salvar</button>
-                $scope._quebra_linha = [];
-            $scope.letra_linhas = $scope.letra.split('\n');
-            $scope.letra_palavras = $scope.letra_linhas.join(' ').split(' ');
-
-            $scope.get_palavra = function(n){
-                return ($scope.palavras_faltando.indexOf(n) == -1 ? $scope.letra_palavras[n] : '');
-            }
-
-            $scope.sortear_palavras = function(){
-                $scope.palavras_faltando = [];
-                while($scope.palavras_faltando.length < $scope.palavras_faltando_n){
-                    var n = parseInt(Math.random() * $scope.letra_palavras.length);
-                    if($scope.palavras_faltando.indexOf(n) == -1){
-                        $scope.palavras_faltando.push(n);
-                        $scope.palavras_usuario.push('');
-                    }
-                }
-            }
-
-            $scope.quebrar_linhas = function(){
-                $scope._quebra_linha = [];
-                var total_palavras = 0;
-                for(var n = 0; n < $scope.letra_linhas.length; n++){
-                    total_palavras += $scope.letra_linhas[n].split(' ').length;
-                    $scope._quebra_linha.push(total_palavras - 1);
-                }
-            }
-
-            $scope.quebra_linha = function(n){
-                return $scope._quebra_linha.indexOf(n) != -1;
-            }
-
-            $scope.acertou = function(n){
-                return $scope.letra_palavras[n].toLowerCase() == $scope.palavras_usuario[$scope.palavras_faltando.indexOf(n)].toLowerCase();
-            }
-
-            $scope.sortear_palavras();
-            $scope.quebrar_linhas();
-        }]);
-    </script>
+               
                               
             </div>
            <!--  <div class="col-ms-1">
