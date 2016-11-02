@@ -9,23 +9,51 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cante in English</title>
+    <!-- <title>App</title> -->
 
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/footer.css" rel="stylesheet">
 
-   
+    <!-- Bootstrap Core CSS -->
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/logo-nav.css" rel="stylesheet">
+
     <style>
     body {
         padding-top: 70px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
+    <style type="text/css">
+        .errou {
+            color: red;
+        }
+        .acertou {
+            color: green;
+        }
+    </style>
 
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+
+    <script src="angular.min.js"></script>
+  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
 </head>
 
-<body>
+<body ng-app="MeuApp">
+
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,60 +64,50 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Cante in English</a>
+                <a class="navbar-brand" href="#">
+                    <!-- <img src="http://placehold.it/150x50&text=Logo" alt=""> -->
+                </a>
             </div>
-            
+            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="templates/bandas.html">Bandas</a>
+                        <a href="#/">Cante In English</a>
                     </li>
                     <li>
-                        <a href="#">Alguma Coisa</a>
+                        <a href="#/bandas">Bandas</a>
                     </li>
                     <li>
-                        <a href="#">Alguma Coisa</a>
-                    </li>
-                    <li>
-                        <a href="#">Sobre</a>
+                        <a href="#/sobre">sobre</a>
                     </li>
                 </ul>
             </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
     </nav>
 
-    
+    <!-- Page Content -->
     <div class="container">
-
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>Aprenda Inglês com o Cante in English</h1>
-                <!-- <p class="lead">Incluir alguma coisa na página inicial</p> -->
-                <ul class="list-unstyled">
-                    <!-- <li>Bootstrap v3.3.6</li>
-                    <li>jQuery v1.11.1</li> -->
-                </ul>
+        <!-- <h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1> -->
+            <div class="col-lg-12">
+           
+                <div ng-view></div>
+                
             </div>
         </div>
-        <div class="col-lg-14 text-center">
-            <img src="static/imagens/capa.gif" width="900px">
-        </div>
-      
-
     </div>
-    <footer class="footer text-center">
-      <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyright &copy; Moisés Abraão 2016
-                    </div>
-                </div>
-            </div>
-    </footer>
+    <!-- /.container -->
 
-    <script src="static/js/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="app.js"></script>
+    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="static/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
 </body>
+
 </html>
